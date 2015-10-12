@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+
+    tools:context="com.example.sliepnier.projectse.Main_menu"
+    android:background="#000000">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/back_ground"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recommend"
+            android:id="@+id/button3"
+            android:layout_marginTop="61dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/button2"
+            android:layout_weight="0.08"
+            android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:text="Coming Soon"
+            android:id="@+id/button"
+            android:layout_below="@+id/button2"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            android:text="ชุดสุดฟิน"
+            android:id="@+id/button2"
+            android:layout_alignStart="@+id/button"
+            android:layout_below="@+id/button3"
+            android:layout_weight="0.08"
+            android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material" />
+
+    </LinearLayout>
+
+</RelativeLayout>
