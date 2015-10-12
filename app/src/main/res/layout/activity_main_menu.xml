@@ -35,7 +35,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/button2"
             android:layout_weight="0.08"
-            android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material" />
+            android:textSize="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:onClick="gotoRecommend"/>
 
         <Button
             android:layout_width="match_parent"
