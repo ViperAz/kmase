@@ -4,54 +4,41 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.HashMap;
+import com.example.sliepnier.projectse.R;
+
+import org.w3c.dom.Text;
 
 /**
- * Created by Sliepnier on 10/12/2015.
+ * Created by Sliepnier on 10/13/2015.
  */
-public class CustomAdapter extends BaseAdapter {
-    Context mContext;
-    String[] strName;
-    int[] resId;
+public class CustomAdapter extends ArrayAdapter<String>{
 
-    public CustomAdapter(Context context,String[] strName, int[] resId){
-        this.mContext= context;
-        this.strName = strName;
-        this.resId = resId;
+    String[] str2;
+    public CustomAdapter(Context context, String[] str,String[] a) {
+        super(context, R.layout.custom_row ,str);
+        str2 = a;
     }
 
     @Override
-    public int getCount() {
-        return 0;
-    }
+    public View getView(int position, View convertView, ViewGroup parent){
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-    @Override
-    public Object getItem(int position) {
-        return strName.length;
-    }
+        String text = getItem(position);
+        TextView text1 = (TextView)customView.findViewById(R.id.textView);
+        String text2 = str2[position];
+        TextView text3 = (TextView)customView.findViewById(R.id.textView2);
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+        ImageView image = (ImageView)customView.findViewById(R.id.imageView1);
 
-    @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater mInflater =
-                (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        text1.setText(text);
+        text3.setText(text2);
+        image.setImageResource(R.drawable.ic_action_search);
 
-        if(view == null)
-            view = mInflater.inflate(R.layout.listview, parent, false);
-
-        TextView textView = (TextView)view.findViewById(R.id.textView1);
-        textView.setText(strName[position]);
-
-        ImageView imageView = (ImageView)view.findViewById(R.id.imageView1);
-        imageView.setBackgroundResource(resId[position]);
-        return null;
+        return customView;
     }
 }

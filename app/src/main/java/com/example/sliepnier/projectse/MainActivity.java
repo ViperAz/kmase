@@ -1,10 +1,12 @@
 package com.example.sliepnier.projectse;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,14 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity{
-
-    public final static String EXTRA_MESSAGE = "Hello world";
+public class MainActivity extends AppCompatActivity {
+    
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
     private EditText edtSeach;
@@ -28,7 +33,24 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String[] a = {"abc","def","ghi","dsfghdf","dfgrhd","dfhth"};
+        String[] b = {"123","4567","888","dg","fjt","d45g5"};
+        ListAdapter adap = new CustomAdapter(this , a,b);
+        ListView lv = (ListView)findViewById(R.id.listView);
+        lv.setAdapter(adap);
+
+       lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               String a = String.valueOf(parent.getItemAtPosition(position));
+               Toast.makeText(MainActivity.this,a,Toast.LENGTH_LONG).show();
+           }
+       });
+
     }
+
+
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -149,11 +171,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void sendMessage(View view){
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+
     }
 
 
